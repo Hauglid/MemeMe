@@ -23,6 +23,8 @@ UINavigationControllerDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var albumButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     @IBOutlet weak var topText: UITextField!
     @IBOutlet weak var bottomText: UITextField!
@@ -61,6 +63,12 @@ UINavigationControllerDelegate {
     }
     
     // ###### Save an image stuff ######
+    @IBAction func saveMeme(_ sender: Any) {
+    }
+    
+    @IBAction func shareMeme(_ sender: Any) {
+    }
+    
     func save() {
         // Create the meme
         let meme = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imageView.image!, memedImage: generateMemedImage())

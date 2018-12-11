@@ -18,9 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="DD7-i4-xAh">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="DD7-i4-xAh" userLabel="Bottombar">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Bzl-rn-JIb"/>
                                     <barButtonItem title="Pick" id="m1w-Om-WY6">
                                         <connections>
                                             <action selector="pickAnImage:" destination="BYZ-38-t0r" id="2E5-Gr-43K"/>
@@ -31,10 +32,12 @@
                                             <action selector="pickAnImage:" destination="BYZ-38-t0r" id="eT1-21-zPE"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="HAn-UD-czy"/>
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uOA-20-tV5">
-                                <rect key="frame" x="-8" y="20" width="383" height="603"/>
+                                <rect key="frame" x="-8" y="64" width="383" height="559"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4P8-CY-2nw">
                                 <rect key="frame" x="16" y="459" width="343" height="44"/>
@@ -54,6 +57,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="VJc-vd-Ef9" userLabel="TopBar">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Share" id="2Mv-Sd-GV7" userLabel="Share">
+                                        <connections>
+                                            <action selector="shareMeme:" destination="BYZ-38-t0r" id="olT-BD-gI7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jNy-v8-HEq"/>
+                                    <barButtonItem tag="1" title="Save" id="Vpe-vM-t04" userLabel="Save">
+                                        <connections>
+                                            <action selector="saveMeme:" destination="BYZ-38-t0r" id="2rm-va-3AW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -65,11 +84,14 @@
                             <constraint firstItem="Iw2-t0-0ad" firstAttribute="centerX" secondItem="4P8-CY-2nw" secondAttribute="centerX" id="JnP-aG-FB7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DD7-i4-xAh" secondAttribute="trailing" id="Jrc-c8-P1o"/>
                             <constraint firstAttribute="bottom" secondItem="4P8-CY-2nw" secondAttribute="bottom" constant="164" id="LGc-pL-MT6"/>
-                            <constraint firstItem="uOA-20-tV5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Mkw-5x-TWh"/>
+                            <constraint firstItem="uOA-20-tV5" firstAttribute="top" secondItem="VJc-vd-Ef9" secondAttribute="bottom" id="MZK-Ra-ZQu"/>
                             <constraint firstItem="uOA-20-tV5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-24" id="OZz-mL-LBt"/>
+                            <constraint firstItem="VJc-vd-Ef9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Rli-4t-b7g"/>
+                            <constraint firstItem="VJc-vd-Ef9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WhE-kP-j0q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DD7-i4-xAh" secondAttribute="bottom" id="Yzu-lx-Xmk"/>
                             <constraint firstItem="uOA-20-tV5" firstAttribute="trailing" secondItem="DD7-i4-xAh" secondAttribute="trailing" id="hb3-ia-00L"/>
                             <constraint firstItem="4P8-CY-2nw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ufb-rI-GIk"/>
+                            <constraint firstItem="VJc-vd-Ef9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zf9-2K-GBR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -78,6 +100,8 @@
                         <outlet property="bottomText" destination="4P8-CY-2nw" id="LO6-Cg-OWX"/>
                         <outlet property="cameraButton" destination="biB-E4-Vrs" id="sa5-Sy-2B9"/>
                         <outlet property="imageView" destination="uOA-20-tV5" id="CdW-yJ-haF"/>
+                        <outlet property="saveButton" destination="Vpe-vM-t04" id="dhp-nT-kWI"/>
+                        <outlet property="shareButton" destination="2Mv-Sd-GV7" id="nad-7W-LQk"/>
                         <outlet property="topText" destination="Iw2-t0-0ad" id="ViC-BG-1f5"/>
                     </connections>
                 </viewController>
