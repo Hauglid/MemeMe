@@ -25,6 +25,8 @@ UINavigationControllerDelegate {
     @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var topBar: UIToolbar!
+    @IBOutlet weak var bottomBar: UIToolbar!
     
     @IBOutlet weak var topText: UITextField!
     @IBOutlet weak var bottomText: UITextField!
@@ -35,6 +37,8 @@ UINavigationControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+            shareButton.isEnabled = (imageView.image != nil)
+        
         subscribeToKeyboardNotifications()
     }
     
@@ -67,6 +71,16 @@ UINavigationControllerDelegate {
     }
     
     @IBAction func shareMeme(_ sender: Any) {
+        let memedImage = generateMemedImage()
+        let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        controller.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                // User canceled
+                return
+            }
+            self.save()
+        }
+        self.present(controller, animated: true, completion: nil)
     }
     
     func save() {
@@ -77,7 +91,8 @@ UINavigationControllerDelegate {
     func generateMemedImage() -> UIImage {
         
         // TODO: Hide toolbar and navbar
-        
+        topBar.isHidden = true
+        bottomBar.isHidden = true
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
@@ -85,7 +100,8 @@ UINavigationControllerDelegate {
         UIGraphicsEndImageContext()
         
         // TODO: Show toolbar and navbar
-        
+        topBar.isHidden = false
+        bottomBar.isHidden = false
         return memedImage
     }
     
@@ -107,8 +123,9 @@ UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         if let image = info[.originalImage] as? UIImage {
             imageView.image = image
+            shareButton.isEnabled = (imageView.image != nil)
+
         }
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -119,10 +136,14 @@ UINavigationControllerDelegate {
     
     // ###### Keyboard stuff ######
     @objc func keyboardWillShow(_ notification: Notification){
-        view.frame.origin.y = -getKeyboardHeight(notification)
+        // Only move view if bottom TextField is focused
+        if bottomText.isFirstResponder {
+            view.frame.origin.y = -getKeyboardHeight(notification)
+        }
     }
     
     @objc func keyboardWillHide(_ notification: Notification){
+        // Reset regardless of TextField focused.
         view.frame.origin.y = 0
     }
     
@@ -130,13 +151,11 @@ UINavigationControllerDelegate {
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
     func unSubscribeToKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
     func getKeyboardHeight(_ notification: Notification) -> CGFloat{
@@ -144,6 +163,5 @@ UINavigationControllerDelegate {
         let keyboardSize = userinfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
-    
 }
 

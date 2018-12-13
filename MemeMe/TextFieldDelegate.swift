@@ -13,6 +13,8 @@ import UIKit
 
 class TextFieldDelegate : NSObject, UITextFieldDelegate {
     
+    var originalText: String?
+    
     override init() {
         super.init()
     }
@@ -22,7 +24,7 @@ class TextFieldDelegate : NSObject, UITextFieldDelegate {
             textField.text = ""
         }
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
