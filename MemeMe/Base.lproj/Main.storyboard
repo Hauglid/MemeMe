@@ -37,7 +37,7 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uOA-20-tV5">
-                                <rect key="frame" x="-8" y="64" width="383" height="559"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4P8-CY-2nw">
@@ -60,7 +60,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jNy-v8-HEq"/>
                                     <barButtonItem tag="1" systemItem="cancel" id="Vpe-vM-t04" userLabel="Save">
                                         <connections>
-                                            <action selector="saveMeme:" destination="BYZ-38-t0r" id="2rm-va-3AW"/>
+                                            <action selector="resetView:" destination="BYZ-38-t0r" id="adR-dl-Gdt"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -78,19 +78,19 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DD7-i4-xAh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3Hq-DX-IiY"/>
+                            <constraint firstItem="uOA-20-tV5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9UC-LF-1Nh"/>
                             <constraint firstItem="uOA-20-tV5" firstAttribute="bottom" secondItem="DD7-i4-xAh" secondAttribute="top" id="A9U-Ds-Zzd"/>
                             <constraint firstItem="Iw2-t0-0ad" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Cd6-ZU-Jlp"/>
                             <constraint firstItem="Iw2-t0-0ad" firstAttribute="top" secondItem="VJc-vd-Ef9" secondAttribute="bottom" constant="30" id="Ezp-sC-dsS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DD7-i4-xAh" secondAttribute="trailing" id="Jrc-c8-P1o"/>
                             <constraint firstItem="uOA-20-tV5" firstAttribute="top" secondItem="VJc-vd-Ef9" secondAttribute="bottom" id="MZK-Ra-ZQu"/>
-                            <constraint firstItem="uOA-20-tV5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-24" id="OZz-mL-LBt"/>
                             <constraint firstItem="VJc-vd-Ef9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Rli-4t-b7g"/>
                             <constraint firstItem="4P8-CY-2nw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SCi-yZ-Giz"/>
                             <constraint firstItem="VJc-vd-Ef9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WhE-kP-j0q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DD7-i4-xAh" secondAttribute="bottom" id="Yzu-lx-Xmk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Iw2-t0-0ad" secondAttribute="trailing" id="gBP-PA-1PZ"/>
                             <constraint firstItem="Iw2-t0-0ad" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gJV-Sd-6Z3"/>
-                            <constraint firstItem="uOA-20-tV5" firstAttribute="trailing" secondItem="DD7-i4-xAh" secondAttribute="trailing" id="hb3-ia-00L"/>
+                            <constraint firstItem="uOA-20-tV5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hb3-ia-00L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4P8-CY-2nw" secondAttribute="trailing" id="iWl-w8-rRx"/>
                             <constraint firstItem="DD7-i4-xAh" firstAttribute="top" secondItem="4P8-CY-2nw" secondAttribute="bottom" constant="30" id="mXr-Ak-wWD"/>
                             <constraint firstItem="VJc-vd-Ef9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zf9-2K-GBR"/>

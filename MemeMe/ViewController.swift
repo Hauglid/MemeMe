@@ -66,6 +66,11 @@ UINavigationControllerDelegate {
         textField.textAlignment = .center
     }
     
+    @IBAction func resetView(_ sender: Any) {
+        imageView.image = nil
+        topText.text = "TOP"
+        bottomText.text = "BOTTOM"
+    }
     // ###### Save an image stuff ######
     @IBAction func saveMeme(_ sender: Any) {
     }
