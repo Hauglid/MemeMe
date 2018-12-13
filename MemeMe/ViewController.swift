@@ -70,6 +70,7 @@ UINavigationControllerDelegate {
         imageView.image = nil
         topText.text = "TOP"
         bottomText.text = "BOTTOM"
+        shareButton.isEnabled = false
     }
     // ###### Save an image stuff ######
     @IBAction func saveMeme(_ sender: Any) {
